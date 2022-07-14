@@ -9,7 +9,8 @@ status.agent_status = "connected";
 status.agent_running = "stopped";
 const path = require("path");
 const Confirm = require('prompt-confirm');
-const prompts = require("prompts")
+const prompts = require("prompts");
+
 
 async function start() {
     try {
@@ -97,7 +98,7 @@ async function start() {
                     project_id: package_json.project_id,
                     system_info: res,
                     status: status,
-                    agent_name: package_json.agent_name
+                    agent_name: package_json.number
                 }
                 console.log("Project ID ", d)
                 socket.emit("join_agent", d);
@@ -151,10 +152,10 @@ async function start() {
                 var res = await agent_info.getinfo();
                 var d = {
                     agent_id: socket.id,
-                    project_id: package_json.tiny_cypress.project_id,
+                    project_id: package_json.project_id,
                     system_info: res,
                     status: status,
-                    agent_name: package_json.tiny_cypress.agent_name
+                    agent_name: package_json.agent_name
                 };
                 socket.emit("agent_info_recv", d);
             });
