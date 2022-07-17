@@ -34,7 +34,6 @@ async function start() {
 
         if (package_json) {
             console.log("Commander Remote Runner"); 
-
             if(!package_json.server_url){
               // const prompt = new Confirm({
               //     name: 'sync_mode', 
@@ -98,7 +97,8 @@ async function start() {
                     project_id: package_json.project_id,
                     system_info: res,
                     status: status,
-                    agent_name: package_json.number
+                    agent_name: package_json.number,
+                    agent:package_json
                 }
                 console.log("Project ID ", d)
                 socket.emit("join_agent", d);
@@ -155,7 +155,8 @@ async function start() {
                     project_id: package_json.project_id,
                     system_info: res,
                     status: status,
-                    agent_name: package_json.agent_name
+                    agent_name: package_json.agent_name,
+                    agent:package_json
                 };
                 socket.emit("agent_info_recv", d);
             });
